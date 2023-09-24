@@ -22,6 +22,9 @@
 //     console.log(getData)
 // })
 
+// button.addEventListener('click', async (event) => {}
+
+
 const button = document.querySelector('#submitButton')
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
@@ -35,8 +38,7 @@ const maxElev = document.querySelector('#max-elev')
 const maxDistance = document.querySelector('#max-distance')
 
 
-
-button.addEventListener('click', async (event) => {
+window.addEventListener('load', async (event) => {
     event.preventDefault()
     let getAccessToken = await axios.post(`https://www.strava.com/oauth/token?client_id=114058&client_secret=3a4922753fdd19897799ce35c4eec24a5bbc0cbb&refresh_token=4a99bd37e1926db5c59be661e90bbb0de6d143f2&grant_type=refresh_token`)
     let accessToken = getAccessToken.data.access_token
@@ -67,7 +69,10 @@ button.addEventListener('click', async (event) => {
     //pulling in longest ride distance to our ruler icon
     let mDistance = Math.round(getStats.data.biggest_ride_distance * 0.00062137121212121 * 100) / 100
     maxDistance.innerHTML = `Max Ride Distance: ${mDistance} miles`
+
 })
+
+
 
 
 
