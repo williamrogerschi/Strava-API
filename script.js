@@ -57,7 +57,35 @@ window.addEventListener('load', async (event) => {
         domain: { type: 'month'},
         subDomain: { type: 'day'},
         range: 6,
-    })
+        scale:
+            { color: {  range: ['rgb(217, 249, 67)', 'rgb(177,186,236)'],
+                        interpolate: 'lab',
+                        type: 'linear',
+                        domain: [0 , 80]
+                    }
+            }
+    },
+    [
+        [
+          Tooltip, // tooltip plugin
+          {
+            text: function (date, value, dayjsDate) {
+              return (
+                (value ? value + ' minutes' : 'No data') + ' on ' + dayjsDate.format('LL'))
+            },
+          },
+        ],
+        [
+            Legend, // legend plugin
+            {
+          tickSize: 0,
+          width: 120,
+          itemSelector: '#heatmap-legend',
+          label: 'Ride Time (minutes)',
+            },
+        ]
+    ]
+    )
 
 
     //pulling in max elev to our mtn icon

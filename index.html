@@ -10,6 +10,12 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/plugins/Tooltip.min.js"></script>
+    <script src="https://unpkg.com/cal-heatmap/dist/plugins/Legend.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,200;0,300;0,600;1,200&display=swap" rel="stylesheet">
     
 </head>
 
@@ -17,13 +23,15 @@
 
     <header></header>
 
-    <div class="sidebar">
+    <div class="navbar-main">
         <ul class="nav-bar">
          <li>Profile</li>
          <li>Activities</li>
          <li>Achievements</li>
         </ul>
      </div>
+
+     <main>
 
      <div class="profile-bar">
         <div class="profile-container">
@@ -32,6 +40,7 @@
         </div>
         <div class="heatmap-container">
              <div id="cal-heatmap"></div>
+             <div id="heatmap-legend"></div>
         </div>
     </div>
 
@@ -76,7 +85,7 @@
         </div>
         
     </div>
-
+<!-- 
     <div class="table-container">
         <h2>2023</h2>
         <table>
@@ -97,14 +106,18 @@
                 <td>Placeholder Stat</td>
             </tr>
         </table>
-    </div>
+    </div> -->
 
-    <div class="input-container">
+    <!-- <div class="input-container">
         <form>
             <input id="textInput" type="text" placeholder="Athlete Search" />
             <button id="submitButton"> 🚲 💨 </button>
         </form>
-    </div>
+    </div> -->
+
+
+    </main>
+
 
 </body>
 </html>
