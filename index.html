@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strava API</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <!-- <div class="header-containter"> -->
+            <!-- <img src="./Assets/strava_header.avif"> -->
+        <!-- </div> -->
+    </header>
+
+    <div class="sidebar">
+        <ul class="nav-bar">
+         <li>Profile</li>
+         <li>Activities</li>
+         <li>Achievements</li>
+        </ul>
+     </div>
+
+     <div class="profile-bar">
+        <div class="profile-container">
+            <div id="profile-img"></div>
+            <div id="profile-name"></div>
+        </div>
+    </div>
+
+     
+
+    <div class="stat-icons">
+        <div class="mtn-stats">
+            <div id="mtn-icon-box">
+                <img id="mtn-img" src="./Assets/mountain.png">
+            </div>
+            <div class="mtn-bar">
+                <ul class="mtn-list">
+                    <li id="max-elev"> </li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </div>
+        </div>
+        <div class="ruler-stats">
+            <div id="ruler-icon-box">
+                <img id="ruler-img" src="./Assets/ruler.png">
+            </div>
+            <div class="ruler-bar">
+                <ul class="ruler-list">
+                    <li id="max-distance"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </div>
+        </div>
+        <div class="speed-stats">
+            <div id="speed-icon-box">
+                <img id="speed-img" src="./Assets/bolt.png">
+            </div>
+            <div class="speed-bar">
+                <ul class="speed-list">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="table-container">
+        <h2>2023</h2>
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Stats</th>
+            </tr>
+            <tr>
+                <td>Placeholder</td>
+                <td>Placeholder Stat</td>
+            </tr>
+            <tr>
+                <td>Placeholder</td>
+                <td>Placeholder Stat</td>
+            </tr>
+            <tr>
+                <td>Placeholder</td>
+                <td>Placeholder Stat</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="input-container">
+        <form>
+            <input id="textInput" type="text" placeholder="Athlete Search" />
+            <button id="submitButton"> 🚲 💨 </button>
+        </form>
+    </div>
+
+</body>
+</html>

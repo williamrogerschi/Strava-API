@@ -1,0 +1,13 @@
+body {
+    background-color: gray;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* 
+#header-img {
+    background: url("https://myoesuf.files.wordpress.com/2012/12/unnamed.jpg");
+} */
