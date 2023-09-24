@@ -24,7 +24,7 @@ window.addEventListener('load', async (event) => {
     let getAthlete = await axios.get(`https://www.strava.com/api/v3/athlete?access_token=${accessToken}`)
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
-    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}`)
+    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
     //getting profile/athlete data
     console.log(getAthlete)
     //pulling stats
@@ -39,17 +39,25 @@ window.addEventListener('load', async (event) => {
     let lastName = getAthlete.data.lastname
     profileName.innerHTML = `${firstName} ${lastName}`
 
-    for (x in hmActivities) {
-         let newObj = new Object()
-         let activityTS = hmActivities[x].start_date_local.format('X')
-         newObj.date = parseInt(activityTS)
-         newObj.value = Math.floor(hmActivities[x].elapsed_time/60)
+    for (x in getActivities.data) {
+        let newObj = new Object()
+         newObj.date = (getActivities.data[x].start_date_local)
+         newObj.value = Math.floor(getActivities.data[x].elapsed_time/60)
          hmActivities.push(newObj)
     }
+    console.log(hmActivities)
 
-    cal.paint({})
-    // render('#cal-heatmap')
-
+    //printing data to the heatmap shell
+    cal.paint({
+        data: { source: hmActivities,
+            x: 'date',
+            y: 'value',
+            groupY: 'sum'},
+        date: { start: '2023-04-01'},    
+        domain: { type: 'month'},
+        subDomain: { type: 'day'},
+        range: 6,
+    })
 
 
     //pulling in max elev to our mtn icon
