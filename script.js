@@ -5,7 +5,13 @@ const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
 const profilePic = document.querySelector('#profile-img')
 const profileName = document.querySelector('#profile-name')
+const profileCity = document.querySelector('#about-city')
+const activitiesList = document.querySelector('.activity-container')
+// const tableHeadSpeed = document.querySelector('thead')
 
+
+
+//#### icon variables ####
 //mtn. icon variables
 const maxElev = document.querySelector('#max-elev')
 
@@ -32,17 +38,21 @@ window.addEventListener('load', async (event) => {
     //activities
     console.log(getActivities)
 
-    //trying to get profile image to load when button is clicked (for now)
+    //profile container dataset
     let profPic = getAthlete.data.profile
     profilePic.innerHTML = `<img src=${profPic}>`
     let firstName = getAthlete.data.firstname
     let lastName = getAthlete.data.lastname
     profileName.innerHTML = `${firstName} ${lastName}`
+    let profCity = getAthlete.data.city
+    let profState = getAthlete.data.state
+    profileCity.innerHTML = `${profCity}, ${profState}`
 
+    //pulling in activities for the cal heatmap
     for (x in getActivities.data) {
         let newObj = new Object()
          newObj.date = (getActivities.data[x].start_date_local)
-         newObj.value = Math.floor(getActivities.data[x].elapsed_time/60)
+         newObj.time = Math.floor(getActivities.data[x].elapsed_time/60)
          hmActivities.push(newObj)
     }
     console.log(hmActivities)
@@ -51,7 +61,7 @@ window.addEventListener('load', async (event) => {
     cal.paint({
         data: { source: hmActivities,
             x: 'date',
-            y: 'value',
+            y: 'time',
             groupY: 'sum'},
         date: { start: '2023-04-01'},    
         domain: { type: 'month'},
@@ -69,9 +79,9 @@ window.addEventListener('load', async (event) => {
         [
           Tooltip, // tooltip plugin
           {
-            text: function (date, value, dayjsDate) {
+            text: function (date, time, dayDate) {
               return (
-                (value ? value + ' minutes' : 'No data') + ' on ' + dayjsDate.format('LL'))
+                (time ? time + ' minutes' : 'No data') + ' on ' + dayDate.format('LL'))
             },
           },
         ],
@@ -84,8 +94,7 @@ window.addEventListener('load', async (event) => {
           label: 'Ride Time (minutes)',
             },
         ]
-    ]
-    )
+    ])
 
 
     //pulling in max elev to our mtn icon
@@ -96,14 +105,47 @@ window.addEventListener('load', async (event) => {
     let mDistance = Math.round(getStats.data.biggest_ride_distance * 0.00062137121212121 * 100) / 100
     maxDistance.innerHTML = `Max Ride Distance: ${mDistance} miles`
 
+    let actArr = []
+    for (x in getActivities.data) {
+      let newObj = new Object()
+       newObj.Date = (getActivities.data[x].start_date_local)
+       newObj.Name = (getActivities.data[x].name)
+       newObj.Time = Math.floor(getActivities.data[x].elapsed_time/60)
+       newObj.Distance = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
+       newObj.Avg_Speed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
+       newObj.Avg_Watts = Math.round(getActivities.data[x].average_watts)
+       newObj.HeartRate = Math.round(getActivities.data[x].average_heartrate)
+       actArr.push(newObj)
+  }
+  console.table(actArr)
 
+  //code block for creating the table for our HTML
+  const generateTableHead = (table, data) => {
+    let thead = table.createTHead()
+    let row = thead.insertRow()
+    for (let key of data) {
+      let th = document.createElement("th")
+      let text = document.createTextNode(key)
+      th.appendChild(text)
+      row.appendChild(th)
+    }
+  }
+
+  const generateTable = (table, data) => {
+    for (let element of data) {
+      let row = table.insertRow();
+      for (key in element) {
+        let cell = row.insertCell();
+        let text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+      }
+    }
+  }
+  
+  let table = document.querySelector("#rides");
+  let data = Object.keys(actArr[0]);
+  generateTable(table, actArr)
+  generateTableHead(table, data)
 
 })
-
-
-
-
-
-
-
 

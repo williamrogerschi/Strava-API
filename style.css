@@ -5,7 +5,6 @@ html {
 body {
     background-color: rgb(226, 222, 233);
     margin: 0;
-
 }
 
 header {
@@ -70,7 +69,6 @@ table, th, td {
     width: 100%;
     padding: 0px 20px 0 20px;
     color: rgb(46,56,65);
-    /* font-weight: 600; */
 }
 
 .nav-bar:hover {
@@ -85,19 +83,18 @@ table, th, td {
     font-weight: bold;
 }
 
-.profile-bar {
+.main-page {
     display: flex;
     flex-direction: row;
     margin: auto;
     padding: 30px 20px 60px 20px;
-    height: 100px;
 }
 .profile-container {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 25%;
     height: 100%;
-    padding-bottom: 100px;
+    padding: 20px;
     color: rgb(46,56,65);
 }
 
@@ -125,18 +122,44 @@ table, th, td {
     justify-content: center;
     font-size: 1em;
     font-weight: bold;
+    /* color: rgb(46,56,65); */
+    color: rgb(110,130,122);
+}
+
+#about-me-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-me {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.page-content {
+    padding-top: 20px;
+    width: auto;
 }
 
 .heatmap-container {
     margin: auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     flex-direction: column;
 }
 
 .ch-container {
     color: rgba(0, 0, 0, 0.493);
     font-weight: bold;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 #heatmap-legend {
@@ -153,42 +176,33 @@ table, th, td {
 }
 
 .stat-icons {
+    margin: auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(110,130,122);
+    font-size: .8em;
+    padding: 15px 0 0 0;
+}
+
+.mtn-stats {
+    display: flex;
+    align-items: center;
     flex-direction: row;
-    padding: 30px 20px 20px 20px;
-    color: rgb(46,56,65);
 }
 
 #mtn-icon-box {
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* .mtn-list {
-    display: flex;
     justify-content: flex-start;
-    align-content: flex-start;
-    flex-direction: column;
-} */
-
-#ruler-icon-box {
-    display: flex;
-    justify-content: center;
     align-items: center;
-}
-
-#speed-icon-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: auto;
+    width: 20%;
 }
 
 #mtn-img {
-    height: 20%;
-    width: 20%;
+    height: 80%;
+    width: 80%;
     display: flex;
     border: 2px solid rgba(0, 0, 0, 0.493);
     border-radius: 100px;
@@ -208,14 +222,40 @@ table, th, td {
     }
 }
 
-#ruler-img {
-    height: 20%;
+#max-elev {
+    padding: 5px;
+}
+
+.ruler-stats {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+#ruler-icon-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
     width: 20%;
+}
+
+.ruler-list {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-direction: column;
+    padding: 5px;
+}
+
+#ruler-img {
+    height: 80%;
+    width: 80%;
     display: flex;
     border: 2px solid rgba(0, 0, 0, 0.493);
+    border-radius: 100px;
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -230,15 +270,40 @@ table, th, td {
     }
 }
 
+#max-distance {
+    padding: 5px;
+}
+
+#speed-icon-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    width: 20%;
+}
+
+.speed-list {
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.speed-stats {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
 
 #speed-img {
-    height: 20%;
-    width: 20%;
+    height: 80%;
+    width: 80%;
     display: flex;
     border: 2px solid rgba(0, 0, 0, 0.493);
+    border-radius: 100px;
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -251,4 +316,30 @@ table, th, td {
     align-items: center;
     border-radius: 100px;
     }
+}
+
+.activity-container {
+    padding: 80px 40px 40px 40px;
+}
+
+#rides {
+    border: 1px solid black;
+}
+
+#ridesTH {
+    border: 1px solid black;
+}
+
+
+
+thead {
+    color: rgb(46,56,65);
+    background-color:rgb(217, 249, 67, 1);
+}
+
+tbody {
+    border: 1px solid black;
+    background-color: rgb(217, 249, 67, 0.5);
+    /* background-color: rgb(177,186,236); */
+    color: rgb(46,56,65);
 }
