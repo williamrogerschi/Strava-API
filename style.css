@@ -181,15 +181,29 @@ table, th, td {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    color: rgb(110,130,122);
+    color: rgb(177,186,236);
     font-size: .8em;
     padding: 15px 0 0 0;
+    /* border: 1px solid rgba(110, 130, 122, 0.77); */
+}
+
+#stat-header {
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-end;
+    font-weight: bold;
+    color: rgb(110,130,122);
+    border-bottom: 1px solid rgba(110, 130, 122, 0.77);
 }
 
 .mtn-stats {
     display: flex;
     align-items: center;
     flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(110, 130, 122, 0.77);
 }
 
 #mtn-icon-box {
@@ -204,8 +218,6 @@ table, th, td {
     height: 80%;
     width: 80%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
-    border-radius: 100px;
     justify-content: center;
     align-items: center;
 }
@@ -223,13 +235,16 @@ table, th, td {
 }
 
 #max-elev {
-    padding: 5px;
+    font-weight: bold;
 }
 
 .ruler-stats {
     display: flex;
     align-items: center;
     flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(110, 130, 122, 0.77);
 }
 
 #ruler-icon-box {
@@ -252,8 +267,6 @@ table, th, td {
     height: 80%;
     width: 80%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
-    border-radius: 100px;
     justify-content: center;
     align-items: center;
 }
@@ -271,7 +284,7 @@ table, th, td {
 }
 
 #max-distance {
-    padding: 5px;
+    font-weight: bold;
 }
 
 #speed-icon-box {
@@ -294,14 +307,15 @@ table, th, td {
     display: flex;
     align-items: center;
     flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(110, 130, 122, 0.77);
 }
 
 #speed-img {
     height: 80%;
     width: 80%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
-    border-radius: 100px;
     justify-content: center;
     align-items: center;
 }
@@ -318,28 +332,25 @@ table, th, td {
     }
 }
 
+#max-rides {
+    font-weight: bold;
+}
+
 .activity-container {
-    padding: 80px 40px 40px 40px;
+    padding: 140px 40px 40px 40px;
 }
 
 #rides {
-    border: 1px solid black;
+    border: 1px solid rgba(110, 130, 122, 0.77);
 }
-
-#ridesTH {
-    border: 1px solid black;
-}
-
-
 
 thead {
-    color: rgb(46,56,65);
-    background-color:rgb(217, 249, 67, 1);
+    color: rgb(226, 222, 233);
+    background-color: rgba(110, 130, 122, 0.77);
 }
 
 tbody {
     border: 1px solid black;
     background-color: rgb(217, 249, 67, 0.5);
-    /* background-color: rgb(177,186,236); */
     color: rgb(46,56,65);
 }

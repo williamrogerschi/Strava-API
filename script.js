@@ -7,8 +7,6 @@ const profilePic = document.querySelector('#profile-img')
 const profileName = document.querySelector('#profile-name')
 const profileCity = document.querySelector('#about-city')
 const activitiesList = document.querySelector('.activity-container')
-// const tableHeadSpeed = document.querySelector('thead')
-
 
 
 //#### icon variables ####
@@ -17,6 +15,9 @@ const maxElev = document.querySelector('#max-elev')
 
 //ruler icon variables
 const maxDistance = document.querySelector('#max-distance')
+
+//speed icon variables
+const maxRides = document.querySelector('#max-rides')
 
 //setting up heat map variables
 const cal = new CalHeatmap()
@@ -31,6 +32,7 @@ window.addEventListener('load', async (event) => {
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
     let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
+    
     //getting profile/athlete data
     console.log(getAthlete)
     //pulling stats
@@ -97,21 +99,25 @@ window.addEventListener('load', async (event) => {
     ])
 
 
-    //pulling in max elev to our mtn icon
-    let mElev = Math.round(getStats.data.biggest_climb_elevation_gain * 3.28084)
-    maxElev.innerHTML = `Max Elevation Gain : ${mElev}ft.`
+    //pulling in total elev to our mtn icon
+    let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
+    maxElev.innerHTML = `Elevation Gain: ${mElev}ft.`
 
-    //pulling in longest ride distance to our ruler icon
-    let mDistance = Math.round(getStats.data.biggest_ride_distance * 0.00062137121212121 * 100) / 100
-    maxDistance.innerHTML = `Max Ride Distance: ${mDistance} miles`
+    //pulling in total ride distance to our ruler icon
+    let mDistance = Math.round(getStats.data.all_ride_totals.distance * 0.00062137121212121 * 100) / 100
+    maxDistance.innerHTML = `Ride Distance: ${mDistance} miles`
+    
+    //pulling in total ride count
+    let mRides = getStats.data.all_ride_totals.count
+    maxRides.innerHTML = `Total Rides: ${mRides}`
 
     let actArr = []
     for (x in getActivities.data) {
       let newObj = new Object()
        newObj.Date = (getActivities.data[x].start_date_local)
        newObj.Name = (getActivities.data[x].name)
-       newObj.Time = Math.floor(getActivities.data[x].elapsed_time/60)
-       newObj.Distance = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
+       newObj.Time_Min = Math.floor(getActivities.data[x].elapsed_time/60)
+       newObj.Distance_Mi = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
        newObj.Avg_Speed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
        newObj.Avg_Watts = Math.round(getActivities.data[x].average_watts)
        newObj.HeartRate = Math.round(getActivities.data[x].average_heartrate)
