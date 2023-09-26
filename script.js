@@ -22,14 +22,14 @@ const cal = new CalHeatmap()
 let hmActivities = []
 
 //#### ytd variables ####
-const ytdElev = document.querySelector('#ytd-elev')
-const ytdDistance = document.querySelector('#ytd-distance')
-const ytdRides = document.querySelector('#ytd-rides')
+// const ytdElev = document.querySelector('#ytd-elev')
+// const ytdDistance = document.querySelector('#ytd-distance')
+// const ytdRides = document.querySelector('#ytd-rides')
 
-//#### recent variables ####
-const recElev = document.querySelector('#rec-elev')
-const recDistance = document.querySelector('#rec-distance')
-const recRides = document.querySelector('#rec-rides')
+// //#### recent variables ####
+// const recElev = document.querySelector('#rec-elev')
+// const recDistance = document.querySelector('#rec-distance')
+// const recRides = document.querySelector('#rec-rides')
 
 
 //main function block for loading all the API data onto the webpage
@@ -62,22 +62,6 @@ window.addEventListener('load', async (event) => {
     let profState = getAthlete.data.state
     profileCity.innerHTML = `${profCity}, ${profState}`
 
-    //#### ytd dataset #####
-    let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
-    ytdElev.innerHTML = `Elevation Gain: ${yElev}ft.`
-    let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121 * 100) / 100
-    ytdDistance.innerHTML = `Ride Distance: ${yDistance} miles`
-    let yRides = getStats.data.ytd_ride_totals.count
-    ytdRides.innerHTML = `Total Rides: ${yRides}`
-
-    //#### recent dataset #####
-    let rElev = Math.round(getStats.data.recent_ride_totals.elevation_gain * 3.28084) / 4
-    recElev.innerHTML = `Elevation Gain: ${rElev}ft.`
-    let rDistance = Math.round(getStats.data.recent_ride_totals.distance * 0.00062137121212121) / 4
-    recDistance.innerHTML = `Ride Distance: ${rDistance} miles`
-    let rRides = Math.ceil(Math.round(getStats.data.recent_ride_totals.count) / 4)
-    recRides.innerHTML = `Total Rides: ${rRides}`
-
     //pulling in activities for the cal heatmap
     for (x in getActivities.data) {
         let newObj = new Object()
@@ -98,8 +82,8 @@ window.addEventListener('load', async (event) => {
         subDomain: { type: 'ghDay', height: 20, width: 20},
         range: 6,
         scale:
-            { color: {  range: ['rgb(217, 249, 67)', 'rgb(177,186,236)'],
-                        interpolate: 'lab',
+            { color: {  scheme: ['PuBuGn'],
+                        // interpolate: 'lab',
                         type: 'linear',
                         domain: [0 , 80]
                     }
@@ -150,6 +134,22 @@ window.addEventListener('load', async (event) => {
     let mRides = getStats.data.all_ride_totals.count
     maxRides.innerHTML = `Total Rides: ${mRides}`
 
+    // //#### ytd dataset #####
+    // let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
+    // ytdElev.innerHTML = `Elevation Gain: ${yElev}ft.`
+    // let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121 * 100) / 100
+    // ytdDistance.innerHTML = `Ride Distance: ${yDistance} miles`
+    // let yRides = getStats.data.ytd_ride_totals.count
+    // ytdRides.innerHTML = `Total Rides: ${yRides}`
+
+    // //#### recent dataset #####
+    // let rElev = Math.round(getStats.data.recent_ride_totals.elevation_gain * 3.28084) / 4
+    // recElev.innerHTML = `Elevation Gain: ${rElev}ft.`
+    // let rDistance = Math.round(getStats.data.recent_ride_totals.distance * 0.00062137121212121) / 4
+    // recDistance.innerHTML = `Ride Distance: ${rDistance} miles`
+    // let rRides = Math.ceil(Math.round(getStats.data.recent_ride_totals.count) / 4)
+    // recRides.innerHTML = `Total Rides: ${rRides}`
+
     let actArr = []
     for (x in getActivities.data) {
       let newObj = new Object()
@@ -193,4 +193,24 @@ window.addEventListener('load', async (event) => {
   generateTableHead(table, data)
 
 })
+
+//////// Setting up dropdown button for profile sidebar //////
+ function myFunction() {
+  document.getElementById('myDropdown').classList.toggle('show')
+  }
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+      let dropdowns = document.getElementsByClassName('dropdown-content')
+      let i
+      for (i = 0; i < dropdowns.length; i++) {
+        let openDropdown = dropdowns[i]
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show')
+        }
+      }
+    }
+  }
+
+
 

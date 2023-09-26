@@ -82,6 +82,7 @@ table, th, td {
     width: 100%;
     padding: 0px 20px 0 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .main-page {
@@ -187,6 +188,47 @@ table, th, td {
     padding: 15px 0 0 0;
     /* border: 1px solid rgba(110, 130, 122, 0.77); */
 }
+
+/* //dropwdown CSS // */
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+  
+  .rider-stats {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .rider-stats a:hover {background-color: #ddd;}
+  
+  .show {display: block;}
+  
 
 #stat-header {
     padding-top: 20px;
