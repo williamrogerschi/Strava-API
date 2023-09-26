@@ -94,8 +94,8 @@ window.addEventListener('load', async (event) => {
             y: 'time',
             groupY: 'sum'},
         date: { start: '2023-04-01'},    
-        domain: { type: 'month'},
-        subDomain: { type: 'day'},
+        domain: { type: 'month', gutter: 20},
+        subDomain: { type: 'ghDay', height: 20, width: 20},
         range: 6,
         scale:
             { color: {  range: ['rgb(217, 249, 67)', 'rgb(177,186,236)'],
@@ -123,7 +123,18 @@ window.addEventListener('load', async (event) => {
           itemSelector: '#heatmap-legend',
           label: 'Ride Time (minutes)',
             },
-        ]
+        ],
+        [
+          CalendarLabel, //calendar plugin
+          {
+            position: 'left',
+            key: 'left',
+            text: () => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            textAlign: 'end',
+            width: 30,
+            padding: [0, 5, 0, 0],
+          },
+        ],
     ])
 
     //#### all time variables for profile container ####
