@@ -12,10 +12,8 @@ const activitiesList = document.querySelector('.activity-container')
 //#### icon variables ####
 //mtn. icon variables
 const maxElev = document.querySelector('#max-elev')
-
 //ruler icon variables
 const maxDistance = document.querySelector('#max-distance')
-
 //speed icon variables
 const maxRides = document.querySelector('#max-rides')
 
@@ -23,7 +21,18 @@ const maxRides = document.querySelector('#max-rides')
 const cal = new CalHeatmap()
 let hmActivities = []
 
+//#### ytd variables ####
+const ytdElev = document.querySelector('#ytd-elev')
+const ytdDistance = document.querySelector('#ytd-distance')
+const ytdRides = document.querySelector('#ytd-rides')
 
+//#### recent variables ####
+const recElev = document.querySelector('#rec-elev')
+const recDistance = document.querySelector('#rec-distance')
+const recRides = document.querySelector('#rec-rides')
+
+
+//main function block for loading all the API data onto the webpage
 window.addEventListener('load', async (event) => {
     event.preventDefault()
     let getAccessToken = await axios.post(`https://www.strava.com/oauth/token?client_id=114058&client_secret=3a4922753fdd19897799ce35c4eec24a5bbc0cbb&refresh_token=4a99bd37e1926db5c59be661e90bbb0de6d143f2&grant_type=refresh_token`)
@@ -32,6 +41,7 @@ window.addEventListener('load', async (event) => {
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
     let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
+    // let getGear = await axios.get(`https://www.strava.com/api/v3/gear/${athleteID}?access_token=${accessToken}`)
     
     //getting profile/athlete data
     console.log(getAthlete)
@@ -39,6 +49,8 @@ window.addEventListener('load', async (event) => {
     console.log(getStats)
     //activities
     console.log(getActivities)
+    //gear
+    // console.log(getGear)
 
     //profile container dataset
     let profPic = getAthlete.data.profile
@@ -49,6 +61,22 @@ window.addEventListener('load', async (event) => {
     let profCity = getAthlete.data.city
     let profState = getAthlete.data.state
     profileCity.innerHTML = `${profCity}, ${profState}`
+
+    //#### ytd dataset #####
+    let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
+    ytdElev.innerHTML = `Elevation Gain: ${yElev}ft.`
+    let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121 * 100) / 100
+    ytdDistance.innerHTML = `Ride Distance: ${yDistance} miles`
+    let yRides = getStats.data.ytd_ride_totals.count
+    ytdRides.innerHTML = `Total Rides: ${yRides}`
+
+    //#### recent dataset #####
+    let rElev = Math.round(getStats.data.recent_ride_totals.elevation_gain * 3.28084) / 4
+    recElev.innerHTML = `Elevation Gain: ${rElev}ft.`
+    let rDistance = Math.round(getStats.data.recent_ride_totals.distance * 0.00062137121212121) / 4
+    recDistance.innerHTML = `Ride Distance: ${rDistance} miles`
+    let rRides = Math.ceil(Math.round(getStats.data.recent_ride_totals.count) / 4)
+    recRides.innerHTML = `Total Rides: ${rRides}`
 
     //pulling in activities for the cal heatmap
     for (x in getActivities.data) {
@@ -98,7 +126,7 @@ window.addEventListener('load', async (event) => {
         ]
     ])
 
-
+    //#### all time variables for profile container ####
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
     maxElev.innerHTML = `Elevation Gain: ${mElev}ft.`
@@ -123,7 +151,7 @@ window.addEventListener('load', async (event) => {
        newObj.HeartRate = Math.round(getActivities.data[x].average_heartrate)
        actArr.push(newObj)
   }
-  console.table(actArr)
+  // console.table(actArr)
 
   //code block for creating the table for our HTML
   const generateTableHead = (table, data) => {
