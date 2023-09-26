@@ -40,20 +40,6 @@ li {
     padding: 0 20px 0 20px;
 }
 
-/* 
-.table-container {
-    display: inline;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-content: flex-start;
-    flex-wrap: column;
-
-}
-
-table, th, td {
-    border: 1px solid white;
-} */
 
 .navbar-main {
     display: flex;
@@ -94,7 +80,7 @@ table, th, td {
 .profile-container {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 40%;
     height: 100%;
     padding: 20px;
     color: rgb(46,56,65);
@@ -183,49 +169,55 @@ table, th, td {
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    color: rgb(177,186,236);
-    font-size: .8em;
-    padding: 15px 0 0 0;
+    color: rgb(46,56,65);
+    font-size: 12px;
+    padding-top: 50px;
     /* border: 1px solid rgba(110, 130, 122, 0.77); */
 }
 
 /* //dropwdown CSS // */
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
-    padding: 16px;
+    background-color: rgb(217, 249, 67, 1);
+    color: rgb(46,56,65);
+    padding: 5px 20px 5px 20px;
     font-size: 16px;
-    border: none;
+    border: 1px solid rgba(110, 130, 122, 0.77);
     cursor: pointer;
+    width: auto;
+    font-family: 'Roboto Mono', monospace;
   }
   
   .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: rgb(226, 222, 233);
+    border: 1px solid rgb(217, 249, 67, 1);
   }
   
   .rider-stats {
     position: relative;
-    display: inline-block;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
   }
   
   .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
+    background-color: rgb(217, 249, 67, 1);
+    min-width: 100px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
   
   .dropdown-content a {
-    color: black;
+    color: rgb(46,56,65);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
   }
   
-  .rider-stats a:hover {background-color: #ddd;}
+  .rider-stats a:hover {background-color: rgb(226, 222, 233);}
   
   .show {display: block;}
   
@@ -235,7 +227,7 @@ table, th, td {
     display: flex;
     justify-content: flex-start;
     align-content: flex-end;
-    font-weight: bold;
+    /* font-weight: bold; */
     color: rgb(110,130,122);
     border-bottom: 1px solid rgba(110, 130, 122, 0.77);
 }
@@ -278,7 +270,7 @@ table, th, td {
 }
 
 #max-elev {
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .ruler-stats {
@@ -327,7 +319,7 @@ table, th, td {
 }
 
 #max-distance {
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 #speed-icon-box {
@@ -376,7 +368,7 @@ table, th, td {
 }
 
 #max-rides {
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .activity-container {
@@ -388,8 +380,8 @@ table, th, td {
 }
 
 thead {
-    color: rgb(226, 222, 233);
-    background-color: rgba(110, 130, 122, 0.77);
+    color: rgb(46,56,65, 0.5);
+    background-color: rgb(217, 249, 67, 1);
 }
 
 tbody {

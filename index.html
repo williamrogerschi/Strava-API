@@ -45,11 +45,11 @@
             </div>
             <div class="stat-icons">
                 <div class="rider-stats">
-                    <button onclick="myFunction()" class="dropbtn">Rider Stats</button>
+                    <button onclick="statsDD()" class="dropbtn">All Time</button>
                       <div id="myDropdown" class="dropdown-content">
-                      <a href="#alltime">All Time</a>
-                      <a href="#ytd">Year to Date</a>
-                      <a href="#l4w">Last 4 Weeks</a>
+                      <a id="all-time" href="#alltime">All Time</a>
+                      <a id="ytd" href="#ytd">Year to Date</a>
+                      <a id="l4w" href="#l4w">Last 4 Weeks</a>
                       </div>
                    </div>
                 <div class="mtn-stats">
@@ -71,16 +71,6 @@
                         <p id="max-rides"></p>
                     </div>
             </div>
-            <!-- <div class="ytd-stats">
-                <p id="ytd-elev"></p>
-                <p id="ytd-distance"></p>
-                <p id="ytd-rides"></p>
-            </div>
-            <div class="recent-stats">
-                <p id="rec-elev"></p>
-                <p id="rec-distance"></p>
-                <p id="rec-rides"></p>
-            </div> -->
         </div>
 
         <div class="page-content">

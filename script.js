@@ -1,12 +1,16 @@
 // button.addEventListener('click', async (event) => {}
-
 // const button = document.querySelector('#submitButton')
+
+
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
 const profilePic = document.querySelector('#profile-img')
 const profileName = document.querySelector('#profile-name')
 const profileCity = document.querySelector('#about-city')
 const activitiesList = document.querySelector('.activity-container')
+const yTD = document.querySelector('#ytd')
+const allTime = document.querySelector('#all-time')
+const recent = document.querySelector('#l4w')
 
 
 //#### icon variables ####
@@ -16,6 +20,8 @@ const maxElev = document.querySelector('#max-elev')
 const maxDistance = document.querySelector('#max-distance')
 //speed icon variables
 const maxRides = document.querySelector('#max-rides')
+// dropdown div selector variable
+const dropBtn = document.querySelector('.dropbtn')
 
 //setting up heat map variables
 const cal = new CalHeatmap()
@@ -41,7 +47,7 @@ window.addEventListener('load', async (event) => {
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
     let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
-    // let getGear = await axios.get(`https://www.strava.com/api/v3/gear/${athleteID}?access_token=${accessToken}`)
+    // let getSegments = await axios.get(`https://www.strava.com/api/v3/athletes/segments/starred?access_token=${accessToken}page=1&per_page=10`)
     
     //getting profile/athlete data
     console.log(getAthlete)
@@ -49,8 +55,9 @@ window.addEventListener('load', async (event) => {
     console.log(getStats)
     //activities
     console.log(getActivities)
-    //gear
-    // console.log(getGear)
+    //segments
+    // console.log(getSegments)
+
 
     //profile container dataset
     let profPic = getAthlete.data.profile
@@ -69,7 +76,7 @@ window.addEventListener('load', async (event) => {
          newObj.time = Math.floor(getActivities.data[x].elapsed_time/60)
          hmActivities.push(newObj)
     }
-    console.log(hmActivities)
+    // console.log(hmActivities)
 
     //printing data to the heatmap shell
     cal.paint({
@@ -124,37 +131,73 @@ window.addEventListener('load', async (event) => {
     //#### all time variables for profile container ####
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
-    maxElev.innerHTML = `Elevation Gain: ${mElev}ft.`
+    maxElev.innerHTML = `Elevation Gain: ${mElev} ft.`
 
     //pulling in total ride distance to our ruler icon
-    let mDistance = Math.round(getStats.data.all_ride_totals.distance * 0.00062137121212121 * 100) / 100
+    let mDistance = Math.round(getStats.data.all_ride_totals.distance * 0.00062137121212121)
     maxDistance.innerHTML = `Ride Distance: ${mDistance} miles`
     
     //pulling in total ride count
     let mRides = getStats.data.all_ride_totals.count
     maxRides.innerHTML = `Total Rides: ${mRides}`
 
-    // //#### ytd dataset #####
-    // let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
-    // ytdElev.innerHTML = `Elevation Gain: ${yElev}ft.`
-    // let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121 * 100) / 100
-    // ytdDistance.innerHTML = `Ride Distance: ${yDistance} miles`
-    // let yRides = getStats.data.ytd_ride_totals.count
-    // ytdRides.innerHTML = `Total Rides: ${yRides}`
 
-    // //#### recent dataset #####
-    // let rElev = Math.round(getStats.data.recent_ride_totals.elevation_gain * 3.28084) / 4
-    // recElev.innerHTML = `Elevation Gain: ${rElev}ft.`
-    // let rDistance = Math.round(getStats.data.recent_ride_totals.distance * 0.00062137121212121) / 4
-    // recDistance.innerHTML = `Ride Distance: ${rDistance} miles`
-    // let rRides = Math.ceil(Math.round(getStats.data.recent_ride_totals.count) / 4)
-    // recRides.innerHTML = `Total Rides: ${rRides}`
+    /////// YTD function for dropdown ///////
+    yTD.addEventListener('click', async () => {
 
+      dropBtn.innerHTML = `YTD` // change to uppercase and CSS
+
+      let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
+      maxElev.innerHTML = `Elevation Gain: ${yElev} ft.`
+      console.log(yElev)
+      //pulling in total ride distance to our ruler icon
+      let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121)
+      maxDistance.innerHTML = `Ride Distance: ${yDistance} miles`
+      console.log(yDistance)
+      //pulling in total ride count
+      let yRides = getStats.data.ytd_ride_totals.count
+      maxRides.innerHTML = `Total Rides: ${yRides}`
+      console.log(yRides)
+    })
+
+    /////// All Time dropdown function ////////
+    allTime.addEventListener('click', async () => {
+
+     dropBtn.innerHTML = `All Time`
+
+      let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
+      maxElev.innerHTML = `Elevation Gain: ${mElev} ft.`
+  
+      let mDistance = Math.round(getStats.data.all_ride_totals.distance * 0.00062137121212121)
+      maxDistance.innerHTML = `Ride Distance: ${mDistance} miles`
+      
+      let mRides = getStats.data.all_ride_totals.count
+      maxRides.innerHTML = `Total Rides: ${mRides}`
+    })
+
+    /////// Recent dropdown function ////////
+    recent.addEventListener('click', async () => {
+
+      dropBtn.innerHTML = `Recent`
+ 
+       let rElev = Math.ceil(Math.round(getStats.data.recent_ride_totals.elevation_gain * 3.28084) / 4)
+       maxElev.innerHTML = `Elevation Gain / Week: ${rElev} ft.`
+   
+       let rDistance = Math.ceil(Math.round(getStats.data.recent_ride_totals.distance * 0.00062137121212121) / 4)
+       maxDistance.innerHTML = `Ride Distance / Week: ${rDistance} miles`
+       
+       let rRides = Math.ceil(Math.round(getStats.data.recent_ride_totals.count) / 4)
+       maxRides.innerHTML = `Total Rides / Week: ${rRides}`
+     })
+
+     //creating the objects for my activity array to show only the variables I want
     let actArr = []
     for (x in getActivities.data) {
       let newObj = new Object()
        newObj.Date = (getActivities.data[x].start_date_local)
        newObj.Name = (getActivities.data[x].name)
+        // href = "https://www.strava.com/activities/9920450108"
+       newObj.RideID = (getActivities.data[x].id)  // trying to see if I can locate an ID then put an href link to strava from it!
        newObj.Time_Min = Math.floor(getActivities.data[x].elapsed_time/60)
        newObj.Distance_Mi = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
        newObj.Avg_Speed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
@@ -162,6 +205,8 @@ window.addEventListener('load', async (event) => {
        newObj.HeartRate = Math.round(getActivities.data[x].average_heartrate)
        actArr.push(newObj)
   }
+
+  // .appendChild(href = "https://www.strava.com/activities/9920450108")
   // console.table(actArr)
 
   //code block for creating the table for our HTML
@@ -175,7 +220,6 @@ window.addEventListener('load', async (event) => {
       row.appendChild(th)
     }
   }
-
   const generateTable = (table, data) => {
     for (let element of data) {
       let row = table.insertRow();
@@ -186,16 +230,15 @@ window.addEventListener('load', async (event) => {
       }
     }
   }
-  
   let table = document.querySelector("#rides");
   let data = Object.keys(actArr[0]);
   generateTable(table, actArr)
   generateTableHead(table, data)
-
 })
 
+
 //////// Setting up dropdown button for profile sidebar //////
- function myFunction() {
+ function statsDD() { // change function name and in HTML
   document.getElementById('myDropdown').classList.toggle('show')
   }
 
@@ -211,6 +254,3 @@ window.addEventListener('load', async (event) => {
       }
     }
   }
-
-
-
