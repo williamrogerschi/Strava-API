@@ -130,8 +130,20 @@ li {
 }
 
 .page-content {
-    padding-top: 20px;
+    padding-top: 80px;
     width: auto;
+}
+
+.heatmap-header {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid red;
+    width: 50%;
+}
+
+#hm-title {
+    color: rgb(110,130,122);
 }
 
 .heatmap-container {
@@ -139,6 +151,7 @@ li {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-top: 30px;
 }
 
 .ch-container {
