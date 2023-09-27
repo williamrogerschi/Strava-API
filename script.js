@@ -13,6 +13,10 @@ const allTime = document.querySelector('#all-time')
 const recent = document.querySelector('#l4w')
 
 
+//possible variables for activities table
+// const  newDate = new Date().toLocaleDateString('en-US', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
+
+
 //#### icon variables ####
 //mtn. icon variables
 const maxElev = document.querySelector('#max-elev')
@@ -46,17 +50,15 @@ window.addEventListener('load', async (event) => {
     let getAthlete = await axios.get(`https://www.strava.com/api/v3/athlete?access_token=${accessToken}`)
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
-    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
+    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=10`)
     // let getSegments = await axios.get(`https://www.strava.com/api/v3/athletes/segments/starred?access_token=${accessToken}page=1&per_page=10`)
     
     //getting profile/athlete data
-    console.log(getAthlete)
+    // console.log(getAthlete)
     //pulling stats
-    console.log(getStats)
+    // console.log(getStats)
     //activities
-    console.log(getActivities)
-    //segments
-    // console.log(getSegments)
+    // console.log(getActivities)
 
 
     //profile container dataset
@@ -194,20 +196,16 @@ window.addEventListener('load', async (event) => {
     let actArr = []
     for (x in getActivities.data) {
       let newObj = new Object()
-       newObj.Date = (getActivities.data[x].start_date_local)
-       newObj.Name = (getActivities.data[x].name)
-        // href = "https://www.strava.com/activities/9920450108"
-       newObj.RideID = (getActivities.data[x].id)  // trying to see if I can locate an ID then put an href link to strava from it!
-       newObj.Time_Min = Math.floor(getActivities.data[x].elapsed_time/60)
-       newObj.Distance_Mi = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
-       newObj.Avg_Speed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
-       newObj.Avg_Watts = Math.round(getActivities.data[x].average_watts)
-       newObj.HeartRate = Math.round(getActivities.data[x].average_heartrate)
-       actArr.push(newObj)
+       newObj.date = (getActivities.data[x].start_date_local.slice(0, 10))
+       newObj.name = (getActivities.data[x].name)
+       newObj.timeMin = Math.floor(getActivities.data[x].elapsed_time/60)
+       newObj.distance = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
+       newObj.avgSpeed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
+       newObj.avgWatts = Math.round(getActivities.data[x].average_watts)
+       newObj.heartRate = Math.round(getActivities.data[x].average_heartrate)
+       actArr.push(newObj) //, newDate
   }
-
-  // .appendChild(href = "https://www.strava.com/activities/9920450108")
-  // console.table(actArr)
+  console.table(actArr)
 
   //code block for creating the table for our HTML
   const generateTableHead = (table, data) => {
@@ -215,6 +213,7 @@ window.addEventListener('load', async (event) => {
     let row = thead.insertRow()
     for (let key of data) {
       let th = document.createElement("th")
+      th.setAttribute('id', key)
       let text = document.createTextNode(key)
       th.appendChild(text)
       row.appendChild(th)
@@ -225,6 +224,7 @@ window.addEventListener('load', async (event) => {
       let row = table.insertRow();
       for (key in element) {
         let cell = row.insertCell();
+        cell.setAttribute('id', key)
         let text = document.createTextNode(element[key]);
         cell.appendChild(text);
       }
@@ -234,6 +234,23 @@ window.addEventListener('load', async (event) => {
   let data = Object.keys(actArr[0]);
   generateTable(table, actArr)
   generateTableHead(table, data)
+
+
+  //adjusting text for table header
+  const actDate = document.querySelector('#date')
+  actDate.innerHTML = `Date`
+  const actName = document.querySelector('#name')
+  actName.innerHTML = `Name`
+  const actSpeed = document.querySelector('#avgSpeed')
+  actSpeed.innerHTML = `Avg Speed`
+  const actPower = document.querySelector('#avgWatts')
+  actPower.innerHTML = `Power ⚡⚡`
+  const actTime = document.querySelector('#timeMin')
+  actTime.innerHTML = `Time (min.)`
+  const actDistance = document.querySelector('#distance')
+  actDistance.innerHTML = `Distance  (miles)`
+  const actHeart = document.querySelector('#heartRate')
+  actHeart.innerHTML = `Heart Rate ❤️`
 })
 
 
