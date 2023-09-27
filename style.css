@@ -388,9 +388,6 @@ a {
 #rides {
     text-overflow: ellipsis;
     border: 1px solid rgb(46,56,65, 0.25);
-}
-
-#rides th #name {
     width: auto;
 }
 

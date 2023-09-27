@@ -29,8 +29,8 @@ window.addEventListener('load', async (event) => {
     let getAthlete = await axios.get(`https://www.strava.com/api/v3/athlete?access_token=${accessToken}`)
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
-    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=50`)
-    // let getSegments = await axios.get(`https://www.strava.com/api/v3/athletes/segments/starred?access_token=${accessToken}page=1&per_page=100`)
+    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
+    let getActivitiesTable = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=50`)
     
     // console.log(getAthlete)
     // console.log(getStats)
@@ -62,10 +62,10 @@ window.addEventListener('load', async (event) => {
             x: 'date',
             y: 'time',
             groupY: 'sum'},
-        date: { start: '2023-07-01' }, //'2023-04-01'},    
+        date: { start: '2023-04-01' }, //'2023-04-01'},    
         domain: { type: 'month', gutter: 20},
-        subDomain: { type: 'ghDay', height: 20, width: 40},
-        range: 3,
+        subDomain: { type: 'ghDay', height: 20, width: 20},
+        range: 6,
         scale:
             { color: {  scheme: ['PuBuGn'],
                         type: 'linear',
@@ -105,6 +105,7 @@ window.addEventListener('load', async (event) => {
         ],
     ])
 
+    
     //////// all time variables for profile container ////////
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
@@ -166,15 +167,15 @@ window.addEventListener('load', async (event) => {
 
      //creating the objects for my activity array to show only the variables I want
     let actArr = []
-    for (x in getActivities.data) {
+    for (x in getActivitiesTable.data) {
       let newObj = new Object()
-       newObj.date = (getActivities.data[x].start_date_local.slice(0, 10))
-       newObj.name = (getActivities.data[x].name)
-       newObj.timeMin = Math.floor(getActivities.data[x].elapsed_time/60)
-       newObj.distance = Math.round(getActivities.data[x].distance * 0.000621371 * 100) / 100
-       newObj.avgSpeed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
-       newObj.avgWatts = Math.round(getActivities.data[x].average_watts)
-       newObj.heartRate = Math.round(getActivities.data[x].average_heartrate)
+       newObj.date = (getActivitiesTable.data[x].start_date_local.slice(0, 10))
+       newObj.name = (getActivitiesTable.data[x].name)
+       newObj.timeMin = Math.floor(getActivitiesTable.data[x].elapsed_time/60)
+       newObj.distance = Math.round(getActivitiesTable.data[x].distance * 0.000621371 * 100) / 100
+       newObj.avgSpeed = Math.round(getActivitiesTable.data[x].average_speed * 2.23694 * 100) / 100
+       newObj.avgWatts = Math.round(getActivitiesTable.data[x].average_watts)
+       newObj.heartRate = Math.round(getActivitiesTable.data[x].average_heartrate)
        actArr.push(newObj)
   }
   console.table(actArr)
