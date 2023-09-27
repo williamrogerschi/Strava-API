@@ -1,7 +1,5 @@
 // button.addEventListener('click', async (event) => {}
 // const button = document.querySelector('#submitButton')
-
-
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
 const profilePic = document.querySelector('#profile-img')
@@ -13,34 +11,15 @@ const allTime = document.querySelector('#all-time')
 const recent = document.querySelector('#l4w')
 
 
-//possible variables for activities table
-// const  newDate = new Date().toLocaleDateString('en-US', { weekday:"long", year:"numeric", month:"short", day:"numeric"})
-
-
-//#### icon variables ####
-//mtn. icon variables
+//////// icon variables ////////
 const maxElev = document.querySelector('#max-elev')
-//ruler icon variables
 const maxDistance = document.querySelector('#max-distance')
-//speed icon variables
 const maxRides = document.querySelector('#max-rides')
 // dropdown div selector variable
 const dropBtn = document.querySelector('.dropbtn')
-
 //setting up heat map variables
 const cal = new CalHeatmap()
 let hmActivities = []
-
-//#### ytd variables ####
-// const ytdElev = document.querySelector('#ytd-elev')
-// const ytdDistance = document.querySelector('#ytd-distance')
-// const ytdRides = document.querySelector('#ytd-rides')
-
-// //#### recent variables ####
-// const recElev = document.querySelector('#rec-elev')
-// const recDistance = document.querySelector('#rec-distance')
-// const recRides = document.querySelector('#rec-rides')
-
 
 //main function block for loading all the API data onto the webpage
 window.addEventListener('load', async (event) => {
@@ -50,14 +29,11 @@ window.addEventListener('load', async (event) => {
     let getAthlete = await axios.get(`https://www.strava.com/api/v3/athlete?access_token=${accessToken}`)
     let athleteID = getAthlete.data.id
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
-    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=10`)
-    // let getSegments = await axios.get(`https://www.strava.com/api/v3/athletes/segments/starred?access_token=${accessToken}page=1&per_page=10`)
+    let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=50`)
+    // let getSegments = await axios.get(`https://www.strava.com/api/v3/athletes/segments/starred?access_token=${accessToken}page=1&per_page=100`)
     
-    //getting profile/athlete data
     // console.log(getAthlete)
-    //pulling stats
     // console.log(getStats)
-    //activities
     // console.log(getActivities)
 
 
@@ -86,13 +62,12 @@ window.addEventListener('load', async (event) => {
             x: 'date',
             y: 'time',
             groupY: 'sum'},
-        date: { start: '2023-04-01'},    
+        date: { start: '2023-07-01' }, //'2023-04-01'},    
         domain: { type: 'month', gutter: 20},
-        subDomain: { type: 'ghDay', height: 20, width: 20},
-        range: 6,
+        subDomain: { type: 'ghDay', height: 20, width: 40},
+        range: 3,
         scale:
             { color: {  scheme: ['PuBuGn'],
-                        // interpolate: 'lab',
                         type: 'linear',
                         domain: [0 , 80]
                     }
@@ -130,7 +105,7 @@ window.addEventListener('load', async (event) => {
         ],
     ])
 
-    //#### all time variables for profile container ####
+    //////// all time variables for profile container ////////
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
     maxElev.innerHTML = `Elevation Gain: ${mElev} ft.`
@@ -142,7 +117,6 @@ window.addEventListener('load', async (event) => {
     //pulling in total ride count
     let mRides = getStats.data.all_ride_totals.count
     maxRides.innerHTML = `Total Rides: ${mRides}`
-
 
     /////// YTD function for dropdown ///////
     yTD.addEventListener('click', async () => {
@@ -161,7 +135,6 @@ window.addEventListener('load', async (event) => {
       maxRides.innerHTML = `Total Rides: ${yRides}`
       console.log(yRides)
     })
-
     /////// All Time dropdown function ////////
     allTime.addEventListener('click', async () => {
 
@@ -176,7 +149,6 @@ window.addEventListener('load', async (event) => {
       let mRides = getStats.data.all_ride_totals.count
       maxRides.innerHTML = `Total Rides: ${mRides}`
     })
-
     /////// Recent dropdown function ////////
     recent.addEventListener('click', async () => {
 
@@ -203,7 +175,7 @@ window.addEventListener('load', async (event) => {
        newObj.avgSpeed = Math.round(getActivities.data[x].average_speed * 2.23694 * 100) / 100
        newObj.avgWatts = Math.round(getActivities.data[x].average_watts)
        newObj.heartRate = Math.round(getActivities.data[x].average_heartrate)
-       actArr.push(newObj) //, newDate
+       actArr.push(newObj)
   }
   console.table(actArr)
 
@@ -235,7 +207,6 @@ window.addEventListener('load', async (event) => {
   generateTable(table, actArr)
   generateTableHead(table, data)
 
-
   //adjusting text for table header
   const actDate = document.querySelector('#date')
   actDate.innerHTML = `Date`
@@ -252,7 +223,6 @@ window.addEventListener('load', async (event) => {
   const actHeart = document.querySelector('#heartRate')
   actHeart.innerHTML = `Heart Rate ❤️`
 })
-
 
 //////// Setting up dropdown button for profile sidebar //////
  function statsDD() { // change function name and in HTML
