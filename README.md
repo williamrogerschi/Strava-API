@@ -28,6 +28,7 @@ This API will be a rider profile that is taking data from Strava. Strava is an a
     - The Javascript was used to manipulate and visualize the API data.
     - Another key feature was calling on this data using JS to add event listeners.
         - Event listeners were used throughout this project for button clicks, pulling data, etc.
+        - The main function used the 'on page load' even listener to load in all the data pulled from the API at the same time.
     - I was also able to create a data table dynamically through JS - which housed my activites data.
     - I was able to render a heatmap to the page by creating an object and parsing the data I wanted.
     - Paired with CSS I was able to create the function for my sticky nav.
