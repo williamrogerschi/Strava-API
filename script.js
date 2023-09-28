@@ -105,7 +105,7 @@ window.addEventListener('load', async (event) => {
         ],
     ])
 
-    
+
     //////// all time variables for profile container ////////
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
@@ -240,5 +240,19 @@ window.addEventListener('load', async (event) => {
           openDropdown.classList.remove('show')
         }
       }
+    }
+  }
+
+  //////// Setting up my stick navbar ///////
+  window.onscroll = function() {stickyNav()};
+
+  let navbar = document.getElementById("navbar");
+  let sticky = navbar.offsetTop;
+  
+  function stickyNav() {
+    if (window.scrollY >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
     }
   }

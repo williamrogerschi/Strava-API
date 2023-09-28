@@ -38,10 +38,16 @@ ul {
 
 a {
     padding: 0 20px 0 20px;
+    text-decoration: none;
+    color: rgb(110,130,122)
+}
+
+a:hover {
+    color: rgb(177,186,236);
 }
 
 
-.navbar-main {
+#navbar {
     display: flex;
     justify-content: flex-start;
     align-content: space-around;
@@ -70,6 +76,12 @@ a {
     font-weight: bold;
     cursor: pointer;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
 
 .main-page {
     display: flex;
@@ -176,7 +188,7 @@ a {
 
 }
 
-.stat-icons {
+#stat-icons {
     margin: auto;
     display: flex;
     justify-content: flex-start;
