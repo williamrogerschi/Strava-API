@@ -49,11 +49,15 @@ a:hover {
     color: rgb(177,186,236);
 }
 
+@media only screen and (max-width: 800px) {
+    a {
+        padding: 0 20px 0 10px;
+    }
+}
+
 #navbar {
     display: flex;
     justify-content: flex-start;
-    align-content: space-around;
-    align-items: space-around;
     width: 100%;
     background-color:rgb(217, 249, 67, 1);
 }
@@ -64,8 +68,8 @@ a:hover {
     align-content: center;
     position: relative;
     text-decoration: none;
-    width: 100%;
-    padding: 0px 20px 0 20px;
+    width: auto;
+    padding: 0px;
     color: rgb(46,56,65);
 }
 
@@ -74,19 +78,18 @@ a:hover {
     display: flex;
     text-decoration: none;
     width: 100%;
-    padding: 0px 20px 0 20px;
+    padding: 0px;
     font-weight: bold;
     cursor: pointer;
 }
 
+/* font size was 8px for it to work on iphone 12 and worked on SE when font size is 4px. I think I need to try and either make a hamburger or push the space between the lis in the navbar to accommodate the font size*/
 @media only screen and (max-width: 800px) {
     .nav-bar {
         width: auto;
-        font-size: 8px;
+        font-size: 10px;
         display: flex;
         justify-content: flex-start;
-        align-content: space-between;
-        align-items: space-between;
     }
 }
 
@@ -216,7 +219,7 @@ a:hover {
         flex-direction: column;
         justify-content: center;
         width: auto;
-        padding: 0px;
+        padding-top: 40px;
         margin: 0;
     }
 
@@ -485,7 +488,7 @@ a:hover {
 
 #activity-container {
     padding: 60px 20px 60px 20px;
-    margin-top: 70px;
+    /* margin-top: 70px; */
     background-color:rgb(226, 222, 233);
     box-shadow: 2px 2px 40px rgb(110,130,122, 0.48);
 }
@@ -500,6 +503,7 @@ a:hover {
         width: auto; 
         overflow-x: scroll;
         font-size: 12px;
+        margin-top: 40px;
     }
 }
 
