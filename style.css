@@ -2,7 +2,7 @@ html {
     font-family: 'Roboto Mono', monospace;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 300px) {
     body {
         margin: 0;
     }
@@ -20,6 +20,7 @@ body {
     height: 35vh;
     width: 100%;
     overflow: hidden;
+    margin: 0;
 }
 
 @media only screen and (max-width: 800px) {
@@ -98,11 +99,11 @@ a:hover {
 .main-page {
     display: flex;
     flex-direction: row;
-    margin: auto;
+    margin: 0;
     padding: 30px 20px 60px 20px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 800px) {
     .main-page  {
         display: flex;
         flex-direction: column;
@@ -209,7 +210,17 @@ a:hover {
     padding-top: 40px;
     width: auto;
 }
+@media only screen and (max-width: 800px) {
+    .page-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: auto;
+        padding: 0px;
+        margin: 0;
+    }
 
+}
 .heatmap-header {
     margin: auto;
     display: flex;
@@ -248,7 +259,7 @@ a:hover {
 
 @media only screen and (max-width: 800px) {
     #heatmap-container {
-        width: auto; 
+        width: 100%; 
         overflow-x: scroll;
         font-size: 12px;
     }
