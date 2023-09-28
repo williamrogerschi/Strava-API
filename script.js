@@ -1,4 +1,3 @@
-
 //////// Global Variables ////////
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
@@ -97,7 +96,6 @@ window.addEventListener('load', async (event) => {
           },
         ],
     ])
-
 
     //////// all time variables for profile container ////////
     //pulling in total elev to our mtn icon
@@ -219,7 +217,7 @@ window.addEventListener('load', async (event) => {
 })
 
 //////// Setting up dropdown button for profile sidebar //////
- function statsDD() { // change function name and in HTML
+ function statsDD() { 
   document.getElementById('myDropdown').classList.toggle('show')
   }
 
