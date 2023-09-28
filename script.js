@@ -224,7 +224,7 @@ window.addEventListener('load', async (event) => {
 })
 
 //////// Setting up dropdown button for profile sidebar //////
- function statsDD() { 
+ const statsDD = () =>  { 
   document.getElementById('myDropdown').classList.toggle('show')
   }
 
@@ -243,11 +243,11 @@ window.addEventListener('load', async (event) => {
 
   //////// Setting up my stick navbar ///////
   window.onscroll = function() {stickyNav()};
-
+  
   let navbar = document.getElementById("navbar");
   let sticky = navbar.offsetTop;
   
-  function stickyNav() {
+  const  stickyNav = () => {
     if (window.scrollY >= sticky) {
       navbar.classList.add("sticky")
     } else {

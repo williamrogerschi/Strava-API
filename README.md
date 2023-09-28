@@ -23,6 +23,8 @@ This API will be a rider profile that is taking data from Strava. Strava is an a
         2. Added a sticky nav
         3. Really tried to dial in my responsive CSS for mobile. The only thing I would add more to it, would be a hamburger navbar.
 
+        Inspiration for my CSS was built by my Wireframe:  https://app.diagrams.net/#G1L6gSrPnMq0s-Jzv1d1L3Tz84bNaxb1aj
+
 ### Javascript
 
     - The Javascript was used to manipulate and visualize the API data.
@@ -32,3 +34,16 @@ This API will be a rider profile that is taking data from Strava. Strava is an a
     - I was also able to create a data table dynamically through JS - which housed my activites data.
     - I was able to render a heatmap to the page by creating an object and parsing the data I wanted.
     - Paired with CSS I was able to create the function for my sticky nav.
+
+
+
+#### PseudoCode
+First I need to gather all the necessary APIs (w/ links) and define them as variables - in order to fetch all the necessary data. I then need to write the logic for each data pull and link them to the correct HTML ids/classes.
+
+Once I get some kind of rythym for pulling some data, I can go back into my HTML and really try to think (based off my wireframe) about the HTML structure and what possible divs, classes, etc. I will need to make my CSS cleaner.
+
+Once I have my HTML in order, along with some key data points - I will then have to consider placement that will make the most sense for someone visiting my profile page (this is where some slight CSS will come into play).
+
+With the page starting to come together, I can look at my JS and try to refine the code to my liking (arrow functions/ternary operators, etc.)
+
+With most of the page data all together, I will then focus lastly on my CSS. Possibly play around with responsive CSS, while making sure my webpage is mobile first.
