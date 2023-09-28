@@ -8,10 +8,10 @@ body {
 }
 
 header {
-    background-image: url('./Assets/strava_header.avif');
+    background-image: url('./assets/strava_header.avif');
     background-size: cover;
-    background-position: 50% 75%;
-    height: 30vh;
+    background-position: 50% 87%;
+    height: 35vh;
     width: 100%;
     overflow: hidden;
 }
@@ -122,7 +122,6 @@ a:hover {
     justify-content: center;
     font-size: 1em;
     font-weight: bold;
-    /* color: rgb(46,56,65); */
     color: rgb(110,130,122);
 }
 
@@ -142,7 +141,7 @@ a:hover {
 }
 
 .page-content {
-    padding-top: 80px;
+    padding-top: 40px;
     width: auto;
 }
 
@@ -150,20 +149,27 @@ a:hover {
     margin: auto;
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid rgb(110,130,122);
-    width: 50%;
+    width: 100%;
 }
 
 #hm-title {
     color: rgb(110,130,122);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 30px;
 }
 
-.heatmap-container {
+#heatmap-container {
     margin: auto;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-top: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color:rgb(226, 222, 233);
+    box-shadow: 2px 2px 40px rgba(110, 130, 122, 0.48);
 }
 
 .ch-container {
@@ -393,8 +399,27 @@ a:hover {
     /* font-weight: bold; */
 }
 
-.activity-container {
-    padding: 140px 40px 40px 40px;
+.activity-header {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+#act-title {
+    color: rgb(110,130,122);
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+#activity-container {
+    padding: 60px 20px 60px 20px;
+    margin-top: 70px;
+    background-color:rgb(226, 222, 233);
+    box-shadow: 2px 2px 40px rgb(110,130,122, 0.48);
 }
 
 #rides {

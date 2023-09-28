@@ -27,13 +27,14 @@
     <div id="navbar">
         <ul class="nav-bar">
          <a href="#header-img">Dashboard</a>
-         <a href="#hm-title">Heatmap</a>
-         <a href ="#stat-icons">Achievements</a>
-         <a href ="#rides">Activities</a>
+         <a href="#heatmap-container">Heatmap</a>
+         <a href ="#about-me-container">Achievements</a>
+         <a href ="#activity-container">Activities</a>
         </ul>
      </div>
 
      <main class="main-page">
+
 
         <div class="profile-container">
             <div id="profile-img"></div>
@@ -74,17 +75,19 @@
         </div>
 
         <div class="page-content">
-            <div class="heatmap-header">
-                <h2 id="hm-title">Ride Activity Heatmap</h2>
-            </div>
-                <div class="heatmap-container">
+                <div id="heatmap-container">
+                    <div class="heatmap-header">
+                        <h2 id="hm-title">Ride Activity Heatmap</h2>
+                    </div>
                     <div id="cal-heatmap"></div>
                     <div id="heatmap-legend"></div>
                 </div>
 
-            <div class="activity-container">
-                <table id="rides">
-                </table>
+                 <div id="activity-container">
+                    <div class="activity-header">
+                        <h2 id="act-title">Activities</h2>
+                    </div>
+                    <table id="rides"></table>
             </div>
         </div>
 
