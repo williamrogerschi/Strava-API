@@ -72,6 +72,17 @@ a:hover {
     cursor: pointer;
 }
 
+@media only screen and (max-width: 800px) {
+    .nav-bar {
+        width: auto;
+        font-size: 8px;
+        display: flex;
+        justify-content: flex-start;
+        align-content: space-between;
+        align-items: space-between;
+    }
+}
+
 .sticky {
     position: fixed;
     top: 0;
@@ -85,7 +96,7 @@ a:hover {
     padding: 30px 20px 60px 20px;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1200px) {
     .main-page  {
         display: flex;
         flex-direction: column;
@@ -100,6 +111,15 @@ a:hover {
     color: rgb(46,56,65);
 }
 
+@media only screen and (max-width: 800px) {
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
 #profile-img {
     height: 100%;
     width: 100%;
@@ -107,6 +127,13 @@ a:hover {
     justify-content: center;
     align-items: center;
     padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+    #profile-img {
+        display: flex;
+        justify-content: flex-start;
+    }
 }
 
 #profile-img img {
@@ -127,10 +154,24 @@ a:hover {
     color: rgb(110,130,122);
 }
 
+@media only screen and (max-width: 800px) {
+    #profile-name {
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
 #about-me-container {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    #about-me-container {
+        display: flex;
+        justify-content: flex-start;
+    }
 }
 
 .about-me {
@@ -140,6 +181,21 @@ a:hover {
     margin: auto;
     padding: 5px;
     font-size: 12px;
+}
+
+@media only screen and (max-width: 800px) {
+    .about-me {
+        margin-left: 0px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    #about-city {
+        display: flex;
+        justify-content: center;
+    }
 }
 
 .page-content {
@@ -181,6 +237,13 @@ a:hover {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+@media only screen and (max-width: 800px) {
+    .ch-container {
+        width: 100%;
+        overflow: hidden;
+    }
 }
 
 #heatmap-legend {
@@ -287,7 +350,7 @@ a:hover {
     align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     #mtn-img {
     height: 40%;
     width: 40%;
@@ -336,7 +399,7 @@ a:hover {
     align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     #ruler-img {
     height: 40%;
     width: 40%;
@@ -385,7 +448,7 @@ a:hover {
     align-items: center;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     #speed-img {
     height: 40%;
     width: 40%;
@@ -425,10 +488,17 @@ a:hover {
 }
 
 #rides {
-    text-overflow: ellipsis;
     border: 1px solid rgb(46,56,65, 0.25);
     width: auto;
 }
+
+@media only screen and (max-width: 800px) {
+    #rides {
+        width: 200px; 
+        overflow-x: scroll;
+    }
+}
+
 
 thead {
     color: rgb(46,56,65, 0.5);
