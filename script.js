@@ -1,5 +1,5 @@
-// button.addEventListener('click', async (event) => {}
-// const button = document.querySelector('#submitButton')
+
+//////// Global Variables ////////
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
 const profilePic = document.querySelector('#profile-img')
@@ -9,7 +9,6 @@ const activitiesList = document.querySelector('.activity-container')
 const yTD = document.querySelector('#ytd')
 const allTime = document.querySelector('#all-time')
 const recent = document.querySelector('#l4w')
-
 
 //////// icon variables ////////
 const maxElev = document.querySelector('#max-elev')
@@ -31,11 +30,6 @@ window.addEventListener('load', async (event) => {
     let getStats = await axios.get(`https://www.strava.com/api/v3/athletes/${athleteID}/stats?access_token=${accessToken}`)
     let getActivities = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100`)
     let getActivitiesTable = await axios.get(`https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=50`)
-    
-    // console.log(getAthlete)
-    // console.log(getStats)
-    // console.log(getActivities)
-
 
     //profile container dataset
     let profPic = getAthlete.data.profile
@@ -54,7 +48,6 @@ window.addEventListener('load', async (event) => {
          newObj.time = Math.floor(getActivities.data[x].elapsed_time/60)
          hmActivities.push(newObj)
     }
-    // console.log(hmActivities)
 
     //printing data to the heatmap shell
     cal.paint({
@@ -62,14 +55,14 @@ window.addEventListener('load', async (event) => {
             x: 'date',
             y: 'time',
             groupY: 'sum'},
-        date: { start: '2023-04-01' }, //'2023-04-01'},    
+        date: { start: '2023-04-01' },  
         domain: { type: 'month', gutter: 20},
         subDomain: { type: 'ghDay', height: 20, width: 20},
         range: 6,
         scale:
             { color: {  scheme: ['PuBuGn'],
                         type: 'linear',
-                        domain: [0 , 80]
+                        domain: [0 , 80],
                     }
             }
     },
@@ -173,12 +166,11 @@ window.addEventListener('load', async (event) => {
        newObj.name = (getActivitiesTable.data[x].name)
        newObj.timeMin = Math.floor(getActivitiesTable.data[x].elapsed_time/60)
        newObj.distance = Math.round(getActivitiesTable.data[x].distance * 0.000621371 * 100) / 100
-       newObj.avgSpeed = Math.round(getActivitiesTable.data[x].average_speed * 2.23694 * 100) / 100
+       newObj.avgSpeed = Math.round(getActivitiesTable.data[x].average_speed * 2.23694 * 10) / 10
        newObj.avgWatts = Math.round(getActivitiesTable.data[x].average_watts)
        newObj.heartRate = Math.round(getActivitiesTable.data[x].average_heartrate)
        actArr.push(newObj)
   }
-  console.table(actArr)
 
   //code block for creating the table for our HTML
   const generateTableHead = (table, data) => {
@@ -194,16 +186,17 @@ window.addEventListener('load', async (event) => {
   }
   const generateTable = (table, data) => {
     for (let element of data) {
-      let row = table.insertRow();
+      let row = table.insertRow()
       for (key in element) {
-        let cell = row.insertCell();
+        let cell = row.insertCell()
         cell.setAttribute('id', key)
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
+        let text = document.createTextNode(element[key])
+        cell.appendChild(text)
       }
     }
   }
-  let table = document.querySelector("#rides");
+
+  let table = document.querySelector("#rides")
   let data = Object.keys(actArr[0]);
   generateTable(table, actArr)
   generateTableHead(table, data)

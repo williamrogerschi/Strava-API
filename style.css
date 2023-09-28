@@ -14,9 +14,9 @@ body {
 }
 
 #header-img {
-    background-image: url('./assets/stravaapi_image_mtn.jpeg');
+    background-image: url('./assets/Untitled_design.png');
     background-size: cover;
-    background-position: 50% 55%;
+    background-position: 50% 65%;
     height: 35vh;
     width: 100%;
     overflow: hidden;
@@ -257,6 +257,10 @@ a:hover {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+
+.plot-d6a7b5-ramp {
+    font-family: 'Roboto Mono', monospace;
 }
 
 @media only screen and (max-width: 800px) {
