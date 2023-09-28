@@ -2,6 +2,12 @@ html {
     font-family: 'Roboto Mono', monospace;
 }
 
+@media only screen and (max-width: 800px) {
+    body {
+        margin: 0;
+    }
+}
+
 body {
     background-color: rgb(226, 222, 233);
     margin: 0;
@@ -117,6 +123,7 @@ a:hover {
         flex-direction: column;
         justify-content: center;
         width: 100%;
+        padding: 0px;
     }
 }
 
@@ -240,9 +247,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 800px) {
-    .ch-container {
-        width: 100%;
-        overflow: hidden;
+    #heatmap-container {
+        width: auto; 
+        overflow-x: scroll;
+        font-size: 12px;
     }
 }
 
@@ -251,12 +259,6 @@ a:hover {
     display: flex;
     justify-content: center;
     color:rgba(0, 0, 0, 0.493);
-}
-
-.input-container {
-    display: flex;
-    justify-content: flex-start;
-
 }
 
 #stat-icons {
@@ -312,8 +314,8 @@ a:hover {
     display: block
   }
   
-  .rider-stats a:hover {background-color: rgb(226, 222, 233);}
-  .show {display: block;}
+ .rider-stats a:hover {background-color: rgb(226, 222, 233);}
+ .show {display: block;}
   
 
 #stat-header {
@@ -332,6 +334,7 @@ a:hover {
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(110, 130, 122, 0.77);
+    border-width: auto;
 }
 
 #mtn-icon-box {
@@ -362,9 +365,6 @@ a:hover {
     }
 }
 
-#max-elev {
-    /* font-weight: bold; */
-}
 
 .ruler-stats {
     display: flex;
@@ -409,10 +409,6 @@ a:hover {
     align-items: center;
     border-radius: 100px;
     }
-}
-
-#max-distance {
-    /* font-weight: bold; */
 }
 
 #speed-icon-box {
@@ -460,15 +456,11 @@ a:hover {
     }
 }
 
-#max-rides {
-    /* font-weight: bold; */
-}
-
 .activity-header {
     margin: auto;
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 100%;
 }
 
 #act-title {
@@ -493,9 +485,10 @@ a:hover {
 }
 
 @media only screen and (max-width: 800px) {
-    #rides {
-        width: 200px; 
+    #activity-container {
+        width: auto; 
         overflow-x: scroll;
+        font-size: 12px;
     }
 }
 
