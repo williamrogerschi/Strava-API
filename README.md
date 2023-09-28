@@ -6,28 +6,28 @@ An API using data from Strava to pull rider profile stats/data
 
 This API will be a rider profile that is taking data from Strava. Strava is an app that lets you upload workout activities. In this case, I'm specifically interested in parsing my ride (bicycle) data. Once uploaded you can keep track of all your ride data including: time, location, route, speed, distance, etc. This social media platform is sort of like the 'facebook' for cyclists.
 
-In this project, I will be pulling my ride data in order to make my own rider profile page. I will show cumumaltive ride data as well as stats on recent rides.
 
-### Getting Started
+### HTML
 
-1. First, I will get the API connections configured - Stravas API requires an access code that changes every 6 hours. In order to avoid re-configuring the connection everytime it expires, I have set up a refresh token in order to automatically fetch the updated access token.√ 
- 
- - note, I have the acitivities dataset configured, but will have to still add athlete stats. Find information on the available datasets here: https://developers.strava.com/playground/#/
+    - The HTML was used to separate main blocks of content into divs to easily style them for the page layout.
+    - The site is composed into three main parts:
+        1. The first part is the header, where the image and nav bar live.
+        2. Second, is the profile container - which houses the users profile image, about them, and their acheivements.
+        3. Third is the main page content which houses the majority of the content on the site:
+            - The main content was broken down into two main parts, the heatmap container and the activity container. This allowed me to style the divs accordingly and with ease. 
 
- - Here is the setup for the Strava API: https://developers.strava.com/docs/getting-started/#curl 
-2. Second, I will begin to visualize my wireframe to get a sense of what I want my profile page to look like, and what CSS elements I will need to make this happen.
-3. Third, I will work on my JS logic to start pulling the data necessary from the API(s).
-4. Lastly, I will begin to work with my CSS to make my wireframe vision complete.
+### CSS
 
-#### PseudoCode
+    - Some CSS features that I was proud to showcase were the following:
+        1. Figured out how to add a scroll within a div container (this is useful for mobile on the heatmap)
+        2. Added a sticky nav
+        3. Really tried to dial in my responsive CSS for mobile. The only thing I would add more to it, would be a hamburger navbar.
 
-First I need to gather all the necessary APIs (w/ links) and define them as variables - in order to fetch all the necessary data.
-I then need to write the logic for each data pull and link them to the correct HTML ids/classes.
+### Javascript
 
-Once I get some kind of rythym for pulling some data, I can go back into my HTML and really try to think (based off my wireframe) about the HTML structure and what possible divs, classes, etc. I will need to make my CSS cleaner.
-
-Once I have my HTML in order, along with some key data points - I will then have to consider placement that will make the most sense for someone visiting my profile page (this is where some slight CSS will come into play).
-
-With the page starting to come together, I can look at my JS and try to refine the code to my liking (arrow functions/ternary operators, etc.)
-
-With most of the page data all together, I will then focus lastly on my CSS. Possibly play around with responsive CSS, while making sure my webpage is mobile first.
+    - The Javascript was used to manipulate and visualize the API data.
+    - Another key feature was calling on this data using JS to add event listeners.
+        - Event listeners were used throughout this project for button clicks, pulling data, etc.
+    - I was also able to create a data table dynamically through JS - which housed my activites data.
+    - I was able to render a heatmap to the page by creating an object and parsing the data I wanted.
+    - Paired with CSS I was able to create the function for my sticky nav.

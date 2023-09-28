@@ -8,6 +8,8 @@ const activitiesList = document.querySelector('.activity-container')
 const yTD = document.querySelector('#ytd')
 const allTime = document.querySelector('#all-time')
 const recent = document.querySelector('#l4w')
+const loading = document.querySelector('#loading')
+
 
 //////// icon variables ////////
 const maxElev = document.querySelector('#max-elev')
@@ -214,6 +216,11 @@ window.addEventListener('load', async (event) => {
   actDistance.innerHTML = `Distance  (miles)`
   const actHeart = document.querySelector('#heartRate')
   actHeart.innerHTML = `Heart Rate ❤️`
+
+  loading.innerHTML = ``
+
+
+
 })
 
 //////// Setting up dropdown button for profile sidebar //////

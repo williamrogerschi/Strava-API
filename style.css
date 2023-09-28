@@ -99,6 +99,19 @@ a:hover {
     width: 100%;
   }
 
+  #loading {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    color: rgb(46,56,65);
+    /* font-weight: bold; */
+  }
+
+  #gif {
+    width: 20px;
+    height: 20px;
+  }
+
 .main-page {
     display: flex;
     flex-direction: row;
@@ -153,7 +166,7 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(217, 249, 67, 1);
+    /* border: 2px solid rgb(217, 249, 67, 1); */
     border-radius: 100px;
 }
 
@@ -237,6 +250,7 @@ a:hover {
     justify-content: center;
     width: 100%;
     padding-bottom: 30px;
+    font-size: 25px;
 }
 
 #heatmap-container {
@@ -382,10 +396,8 @@ a:hover {
     height: 40%;
     width: 40%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
     }
 }
 
@@ -428,10 +440,8 @@ a:hover {
     height: 40%;
     width: 40%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
     }
 }
 
@@ -473,10 +483,8 @@ a:hover {
     height: 40%;
     width: 40%;
     display: flex;
-    border: 2px solid rgba(0, 0, 0, 0.493);
     justify-content: center;
     align-items: center;
-    border-radius: 100px;
     }
 }
 
@@ -494,6 +502,7 @@ a:hover {
     justify-content: center;
     width: 100%;
     padding-bottom: 30px;
+    font-size: 25px;
 }
 
 #activity-container {
@@ -501,6 +510,7 @@ a:hover {
     background-color:rgb(226, 222, 233);
     box-shadow: 2px 2px 10px rgb(110,130,122, 0.48);
     margin-top: 60px;
+    border-radius: 6px;
 }
 
 #rides {

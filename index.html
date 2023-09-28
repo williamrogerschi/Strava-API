@@ -22,6 +22,8 @@
 
 <body>
 
+
+
     <header id="header-img"></header>
 
     <div id="navbar">
@@ -31,6 +33,10 @@
          <a href="#heatmap-container">Heatmap</a>
          <a href ="#activity-container">Activities</a>
         </ul>
+     </div>
+
+     <div id="loading">Getting data...
+        <img id="gif" src="./assets/ZKZg.gif">
      </div>
 
      <main class="main-page">
@@ -77,14 +83,14 @@
         <div class="page-content">
                 <div id="heatmap-container">
                     <div class="heatmap-header">
-                        <h2 id="hm-title">Ride Activity Heatmap</h2>
+                        <p id="hm-title">Ride Activity Heatmap</p>
                     </div>
                     <div id="cal-heatmap"></div>
                     <div id="heatmap-legend"></div>
                 </div>
                  <div id="activity-container">
                     <div class="activity-header">
-                        <h2 id="act-title">Activities</h2>
+                        <p id="act-title">Activities</p>
                     </div>
                     <table id="rides"></table>
             </div>
