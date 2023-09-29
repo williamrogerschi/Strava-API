@@ -119,15 +119,12 @@ window.addEventListener('load', async (event) => {
 
       let yElev = Math.round(getStats.data.ytd_ride_totals.elevation_gain * 3.28084)
       maxElev.innerHTML = `Elevation Gain: ${yElev} ft.`
-      console.log(yElev)
       //pulling in total ride distance to our ruler icon
       let yDistance = Math.round(getStats.data.ytd_ride_totals.distance * 0.00062137121212121)
       maxDistance.innerHTML = `Ride Distance: ${yDistance} miles`
-      console.log(yDistance)
       //pulling in total ride count
       let yRides = getStats.data.ytd_ride_totals.count
       maxRides.innerHTML = `Total Rides: ${yRides}`
-      console.log(yRides)
     })
     /////// All Time dropdown function ////////
     allTime.addEventListener('click', async () => {
