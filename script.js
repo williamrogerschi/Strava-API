@@ -1,4 +1,5 @@
-//////// Global Variables ////////
+
+//////// GLOBAL VARIABLES ////////
 const refreshToken = `23f536bd8a5a372dddafcf05df002f9db97388c2`
 const athleteID = ``
 const profilePic = document.querySelector('#profile-img')
@@ -11,7 +12,7 @@ const recent = document.querySelector('#l4w')
 const loading = document.querySelector('#loading')
 
 
-//////// icon variables ////////
+//////// ICON VARIABLES ////////
 const maxElev = document.querySelector('#max-elev')
 const maxDistance = document.querySelector('#max-distance')
 const maxRides = document.querySelector('#max-rides')
@@ -21,7 +22,8 @@ const dropBtn = document.querySelector('.dropbtn')
 const cal = new CalHeatmap()
 let hmActivities = []
 
-//main function block for loading all the API data onto the webpage
+
+//////// MAIN FUNCTION FOR ON LOAD DATA FOR THE WEBPAGE ///////
 window.addEventListener('load', async (event) => {
     event.preventDefault()
     let getAccessToken = await axios.post(`https://www.strava.com/oauth/token?client_id=114058&client_secret=3a4922753fdd19897799ce35c4eec24a5bbc0cbb&refresh_token=4a99bd37e1926db5c59be661e90bbb0de6d143f2&grant_type=refresh_token`)
@@ -99,7 +101,8 @@ window.addEventListener('load', async (event) => {
         ],
     ])
 
-    //////// all time variables for profile container ////////
+
+    //////// ALL TIME VARIABLES FOR PROFILE CONTAINER ////////
     //pulling in total elev to our mtn icon
     let mElev = Math.round(getStats.data.all_ride_totals.elevation_gain * 3.28084)
     maxElev.innerHTML = `Elevation Gain: ${mElev} ft.`
@@ -112,7 +115,8 @@ window.addEventListener('load', async (event) => {
     let mRides = getStats.data.all_ride_totals.count
     maxRides.innerHTML = `Total Rides: ${mRides}`
 
-    /////// YTD function for dropdown ///////
+
+    /////// YTD DROPDOWN ///////
     yTD.addEventListener('click', async () => {
 
       dropBtn.innerHTML = `YTD` // change to uppercase and CSS
@@ -126,7 +130,9 @@ window.addEventListener('load', async (event) => {
       let yRides = getStats.data.ytd_ride_totals.count
       maxRides.innerHTML = `Total Rides: ${yRides}`
     })
-    /////// All Time dropdown function ////////
+
+
+    /////// ALL TIME DROPDOWN ////////
     allTime.addEventListener('click', async () => {
 
      dropBtn.innerHTML = `All Time`
@@ -140,7 +146,9 @@ window.addEventListener('load', async (event) => {
       let mRides = getStats.data.all_ride_totals.count
       maxRides.innerHTML = `Total Rides: ${mRides}`
     })
-    /////// Recent dropdown function ////////
+
+
+    /////// RECENT DROPDOWN ////////
     recent.addEventListener('click', async () => {
 
       dropBtn.innerHTML = `Recent`
@@ -155,6 +163,8 @@ window.addEventListener('load', async (event) => {
        maxRides.innerHTML = `Total Rides / Week: ${rRides}`
      })
 
+
+     //////// CREATING THE ACTIVITY TABLE /////////
      //creating the objects for my activity array to show only the variables I want
     let actArr = []
     for (x in getActivitiesTable.data) {
@@ -215,12 +225,10 @@ window.addEventListener('load', async (event) => {
   actHeart.innerHTML = `Heart Rate ❤️`
 
   loading.innerHTML = ``
-
-
-
 })
 
-//////// Setting up dropdown button for profile sidebar //////
+
+//////// SETTING UP DROPDOWN BAR FOR ACHIEVEMENTS ////////
  const statsDD = () =>  { 
   document.getElementById('myDropdown').classList.toggle('show')
   }
@@ -238,7 +246,8 @@ window.addEventListener('load', async (event) => {
     }
   }
 
-  //////// Setting up my stick navbar ///////
+  
+  //////// STICKY NAV BAR ////////
   window.onscroll = function() {stickyNav()};
   
   let navbar = document.getElementById("navbar");
